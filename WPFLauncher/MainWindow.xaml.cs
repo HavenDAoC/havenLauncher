@@ -92,7 +92,7 @@ namespace WPFLauncher
 
         private void InitializeLogger()
         {
-            log = new LoggerConfiguration().WriteTo.File("logs/AtlasLauncher-.txt", rollingInterval: RollingInterval.Day).CreateLogger();
+            log = new LoggerConfiguration().WriteTo.File("logs/HavenDAoCLauncher-.txt", rollingInterval: RollingInterval.Day).CreateLogger();
         }
 
         private async Task CheckVersion()
@@ -112,7 +112,7 @@ namespace WPFLauncher
                 _updateAvailable = await updater.CheckForNewVersionAsync();
                 if (_updateAvailable)
                 {
-                    PlayButton.Content = _updateAvailable ? "Checking.." : "Play";
+                    PlayButton.Content = _updateAvailable ? "Checking..." : "Play";
                     PlayButton.IsEnabled = !_updateAvailable;
                     updating = true;
 
@@ -136,11 +136,12 @@ namespace WPFLauncher
             }
             catch (Exception ex)
             {
-                log.Error(ex, "Error starting DAOC");
+                log.Error(ex, "An error occurred while starting DAoC.");
                 EnableAccountCredentials(true);
             }            
         }
         
+        /*
         private async Task<bool> getDiscordStatus(string accountName)
         {
             
@@ -157,6 +158,8 @@ namespace WPFLauncher
             }
 
         }
+        */
+        
         private bool isDiscordRequired()
         {
             try
@@ -173,7 +176,7 @@ namespace WPFLauncher
                     using (var sr = new StreamReader(s))
                     {
                         var discordRequired = sr.ReadToEnd();
-                        return discordRequired == "true";
+                        return discordRequired == "false";
                     }
                 }
             }

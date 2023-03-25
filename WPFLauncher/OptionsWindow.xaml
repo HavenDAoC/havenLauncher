@@ -37,7 +37,7 @@
     </Window.Resources>
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/img/options-bg.png" Stretch="UniformToFill" />
+            <ImageBrush ImageSource="/img/launcherBG.png" Stretch="UniformToFill" />
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
